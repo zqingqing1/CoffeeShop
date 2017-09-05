@@ -27,10 +27,15 @@ public class Customer implements WaitingCustomer{
 	
 	public boolean orderReady(Order o){
 		if(o.equals(drinkOrdered)){
+			exitStore();
 			return true;
 		}
 		else
 			return false;
+	}
+	
+	public void exitStore(){
+		System.out.println(name+": Thanks you, I've received my order, and leaving now");
 	}
 
 }
