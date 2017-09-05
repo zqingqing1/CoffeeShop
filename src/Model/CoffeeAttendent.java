@@ -5,12 +5,13 @@ import java.util.List;
 
 public class CoffeeAttendent {
 	private List<Customer> list;
-	private Order completedOrder;
+	private List<Order> completedOrders;
 	
 	
 	public CoffeeAttendent() {
-		this.list = new LinkedList<>();
-		this.completedOrder = null;
+		list = new LinkedList<>();
+		completedOrders=new LinkedList<>();
+		
 	}
 
 	public void takeOrder(Customer c,Order order,List<String> drinks){
@@ -23,22 +24,28 @@ public class CoffeeAttendent {
 	
 	public void prepareDrink(Order order){
 		System.out.println("Order is preparing");
+		double timetaken = Math.random()*10;
+		try{
+			Thread.sleep((long)(timetaken)*1000);
+			completedOrders.add(order);
+			System.out.println(order.getName()+"'s order is completed");
+		}catch(InterruptedException e){
+			System.out.println("Order failed to prepared...");
+		}
 	}
 	
-	public void completeDrink(Order order){
-		System.out.println("Order is done");
-		completedOrder = order;
-	}
 	public void callOut(){
 		Customer c = null;
-		for(Customer w:list){
-			System.out.println(w.getName()+" been called");	
-			if(w.orderReady(completedOrder)){
-				c = w;
+		for(Order o:completedOrders){
+			System.out.println(o.getName()+"'s order is being calling...");
+			for(Customer w:list){
+				System.out.println(w.getName()+" been called");	
+				if(w.orderReady(o)){
+					c = w;
+				}
 			}
+			list.remove(c);
 		}
 	
-		System.out.println(c.getName()+"'s order is finished");	
-		list.remove(c);		
 	}
 }

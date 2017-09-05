@@ -32,15 +32,9 @@ public class coffeshopt {
 		ca.takeOrder(c3, o3, l3);
 		
 		ca.prepareDrink(o1);
-		ca.completeDrink(o1);
-		ca.callOut();
-		
 		ca.prepareDrink(o2);
-		ca.completeDrink(o2);
-		ca.callOut();
-
 		ca.prepareDrink(o3);
-		ca.completeDrink(o3);
+		
 		ca.callOut();
 		
 		

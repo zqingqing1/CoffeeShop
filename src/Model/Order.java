@@ -15,6 +15,7 @@ public class Order {
 		this.date = null;
 	}
 	
+	
 	public void orderDrink(String drink){
 		ordered.add(drink);	
 	}
@@ -24,6 +25,16 @@ public class Order {
 		System.out.println(date.toString()+" "+name+" ordered:");
 		for(String drink:ordered)
 			System.out.println(drink);
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
